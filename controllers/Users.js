@@ -3,7 +3,7 @@ const User = require('../models/Users')
 const getAllUsers = async (req, res) => {
     try {
         const users = await User.find();
-        res.status(204).json(users);
+        res.status(200).json(users);
     } catch (err) {
         console.error('Error fetching users:', err);
         res.status(500).json({ error: 'Failed to fetch users' });
@@ -19,7 +19,7 @@ const getSingleUser = async (req, res) => {
             return res.status(404).json({ error: 'User not found' });
         }
         
-        res.status(204).json(user);
+        res.status(200).json(user);
     } catch (err) {
         console.error('Error fetching user:', err);
         res.status(500).json({ error: 'Failed to fetch user' });

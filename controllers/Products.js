@@ -3,7 +3,7 @@ const Product = require('../models/Products')
 const getAllProducts = async (req, res) => {
     try {
         const products = await Product.find();
-        res.status(204).json(products);
+        res.status(200).json(products);
     } catch (err) {
         console.error('Error fetching products:', err);
         res.status(500).json({ error: 'Failed to fetch products' });
@@ -19,7 +19,7 @@ const getSingleProduct = async (req, res) => {
             return res.status(404).json({ error: 'Product not found' });
         }
         
-        res.status(204).json(product);
+        res.status(200).json(product);
     } catch (err) {
         console.error('Error fetching product:', err);
         res.status(500).json({ error: 'Failed to fetch product' });
