@@ -36,16 +36,16 @@ DELETE http://localhost:3000/users/6692067b4f516e59cfcd49cb HTTP/1.1
 GET https://cse341-project2-hhgl.onrender.com/users
 
 ### Get user by id
-GET https://cse341-project2-hhgl.onrender.com/users/666b7393ec5d3c31d51afb7c
+GET https://cse341-project2-hhgl.onrender.com/users/6692874af5599b3a347ed902
 
 ### Create user
 POST https://cse341-project2-hhgl.onrender.com/users HTTP/1.1
 content-type: application/json
 
 {
-    "username": "luquita",
-    "email": "rodneymason@zaavala-abbott.com",
-    "password": "W$2uq&s8n@",
+    "username": "new_user",
+    "email": "new-user@gmail.com",
+    "password": "PasSword",
     "role": "user"
 }
 
@@ -61,4 +61,4 @@ content-type: application/json
 }
 
 ### Delete user
-DELETE https://cse341-project2-hhgl.onrender.com/users/666f6eb0845c73c900052e7f HTTP/1.1
+DELETE https://cse341-project2-hhgl.onrender.com/users/6692874af5599b3a347ed902 HTTP/1.1
