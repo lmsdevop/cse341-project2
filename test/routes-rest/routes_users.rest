@@ -33,34 +33,32 @@ DELETE http://localhost:3000/users/6692067b4f516e59cfcd49cb HTTP/1.1
 
 // PRODUCTION
 ### Get all users
-GET https://cse341-project1-rb78.onrender.com/contacts
+GET https://cse341-project2-hhgl.onrender.com/users
 
 ### Get user by id
-GET https://cse341-project1-rb78.onrender.com/contacts/666b7393ec5d3c31d51afb7c
+GET https://cse341-project2-hhgl.onrender.com/users/666b7393ec5d3c31d51afb7c
 
 ### Create user
-POST https://cse341-project1-rb78.onrender.com/contacts HTTP/1.1
+POST https://cse341-project2-hhgl.onrender.com/users HTTP/1.1
 content-type: application/json
 
 {
-    "firstName":"Elisa",
-    "lastName":"Pombeiro",
-    "email":"elisa.pombeiro@email.com",
-    "favoriteColor":"White",
-    "birthday": "06/09/2004"
+    "username": "luquita",
+    "email": "rodneymason@zaavala-abbott.com",
+    "password": "W$2uq&s8n@",
+    "role": "user"
 }
 
 ### Update user
-PUT https://cse341-project1-rb78.onrender.com/contacts/666f6eb0845c73c900052e7f HTTP/1.1
+PUT https://cse341-project2-hhgl.onrender.com/users/666f6eb0845c73c900052e7f HTTP/1.1
 content-type: application/json
 
 {
-    "firstName":"Yuri",
-    "lastName":"Pombeiro",
-    "email":"yuri.pombeiro@email.com",
-    "favoriteColor":"White",
-    "birthday": "28/05/2005"
+    "username": "queissu_gonzalez",
+    "email": "rodneymason@zavala-abbott.com",
+    "password": "Luke",
+    "role": "teste"
 }
 
 ### Delete user
-DELETE https://cse341-project1-rb78.onrender.com/contacts/666f6eb0845c73c900052e7f HTTP/1.1
+DELETE https://cse341-project2-hhgl.onrender.com/users/666f6eb0845c73c900052e7f HTTP/1.1
