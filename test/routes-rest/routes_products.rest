@@ -1,0 +1,68 @@
+// LOCALHOST
+### Get all products
+GET http://localhost:3000/products
+
+### Get product by id
+GET http://localhost:3000/products/6691e9b00c5bee956a757ef5
+
+### Create product
+POST http://localhost:3000/products HTTP/1.1
+content-type: application/json
+
+{
+    "productName": "Ergonomic Cotton Keyboaraaaaad",
+    "description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+    "price": 99.99,
+    "category": "electronics",
+    "stockQuantity": 200
+}
+
+### Update product
+PUT http://localhost:3000/products/669203474f9fad205da9e298 HTTP/1.1
+content-type: application/json
+
+{
+    "productName": "Ergonomic Cotton Keyboardas",
+    "description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+    "price": "199.99",
+    "category": "electronics",
+    "stockQuantity": 200
+}
+
+### Delete product
+DELETE http://localhost:3000/products/669201ee5f42592c830a0bb5 HTTP/1.1
+
+
+// PRODUCTION
+### Get all products
+GET https://cse341-project1-rb78.onrender.com/contacts
+
+### Get product by id
+GET https://cse341-project1-rb78.onrender.com/contacts/666b7393ec5d3c31d51afb7c
+
+### Create product
+POST https://cse341-project1-rb78.onrender.com/contacts HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"Elisa",
+    "lastName":"Pombeiro",
+    "email":"elisa.pombeiro@email.com",
+    "favoriteColor":"White",
+    "birthday": "06/09/2004"
+}
+
+### Update product
+PUT https://cse341-project1-rb78.onrender.com/contacts/666f6eb0845c73c900052e7f HTTP/1.1
+content-type: application/json
+
+{
+    "firstName":"Yuri",
+    "lastName":"Pombeiro",
+    "email":"yuri.pombeiro@email.com",
+    "favoriteColor":"White",
+    "birthday": "28/05/2005"
+}
+
+### Delete product
+DELETE https://cse341-project1-rb78.onrender.com/contacts/666f6eb0845c73c900052e7f HTTP/1.1
