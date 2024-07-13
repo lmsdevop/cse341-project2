@@ -1,6 +1,8 @@
 const Product = require('../models/Products')
 
 const getAllProducts = async (req, res) => {
+    //#swagger.tags=['Products']    
+
     try {
         const products = await Product.find();
         res.status(200).json(products);
@@ -11,6 +13,8 @@ const getAllProducts = async (req, res) => {
 };
 
 const getSingleProduct = async (req, res) => {
+    //#swagger.tags=['Products']    
+
     try {
         const productId = req.params.id;
         const product = await Product.findById(productId);
@@ -27,6 +31,8 @@ const getSingleProduct = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
+    //#swagger.tags=['Products']    
+
     try {
         const newProduct = new Product(req.body);
         await newProduct.save();
@@ -39,6 +45,8 @@ const createProduct = async (req, res) => {
 };
 
 const updateProduct = async (req, res) => {
+    //#swagger.tags=['Products']    
+
     try {
         const productId = req.params.id;
         const { productName, description, price, category, stockQuantity } = req.body;
@@ -64,6 +72,8 @@ const updateProduct = async (req, res) => {
 };
 
 const deleteProduct = async (req, res) => {
+    //#swagger.tags=['Products']    
+
     try {
         const productId = req.params.id;
         const deletedProduct = await Product.findByIdAndDelete(productId);

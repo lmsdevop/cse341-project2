@@ -36,7 +36,7 @@ DELETE http://localhost:3000/users/6692067b4f516e59cfcd49cb HTTP/1.1
 GET https://cse341-project2-hhgl.onrender.com/users
 
 ### Get user by id
-GET https://cse341-project2-hhgl.onrender.com/users/6692874af5599b3a347ed902
+GET https://cse341-project2-hhgl.onrender.com/users/6691e3fb9a42531a76685217
 
 ### Create user
 POST https://cse341-project2-hhgl.onrender.com/users HTTP/1.1

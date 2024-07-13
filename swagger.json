@@ -37,7 +37,10 @@
     },
     "/users/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "description": "Get all users",
         "responses": {
           "200": {
             "description": "OK"
@@ -48,16 +51,46 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "description": "Create Users",
+        "parameters":  [
+          {
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "username": {
+                "example": "any"
+              },
+              "email": {
+                "example": "any"
+              },
+              "password": {
+                "example": "any"
+              },
+              "role": {
+                "example": "any"
+              }
+            }
+          }
+        }
+      ]
+        ,
         "responses": {
-          "default": {
-            "description": ""
+          "204": {
+            "description": "No Content"
           }
         }
       }
     },
     "/users/{id}": {
       "get": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -80,6 +113,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -111,8 +147,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content"
           },
           "404": {
             "description": "Not Found"
@@ -123,6 +159,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -147,6 +186,9 @@
     },
     "/products/": {
       "get": {
+        "tags": [
+          "Products"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -158,16 +200,46 @@
         }
       },
       "post": {
+        "tags": [
+          "Products"
+        ],
         "description": "",
+        "parameters":[{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "productName": {
+                "example": "any"
+              },
+              "description": {
+                "example": "any"
+              },
+              "price": {
+                "example": "any"
+              },
+              "category": {
+                "example": "any"
+              },
+              "stockQuantity": {
+                "example": "any"
+              }
+            }
+          }
+        }],
         "responses": {
-          "default": {
-            "description": ""
+          "204": {
+            "description": "No Content"
           }
         }
       }
     },
     "/products/{id}": {
       "get": {
+        "tags": [
+          "Products"
+        ],
         "description": "",
         "parameters": [
           {
@@ -190,6 +262,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Products"
+        ],
         "description": "",
         "parameters": [
           {
@@ -224,8 +299,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content"
           },
           "404": {
             "description": "Not Found"
@@ -236,6 +311,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Products"
+        ],
         "description": "",
         "parameters": [
           {
