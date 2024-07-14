@@ -26,7 +26,10 @@ const getSingleUser = async (req, res) => {
         res.status(200).json(user);
     } catch (err) {
         console.error('Error fetching user:', err);
-        res.status(500).json({ error: 'Failed to fetch user' });
+        res.status(500).json({ 
+            error: 'Failed to fetch user',
+            message: err.message
+        });
     }
 };
 
@@ -40,7 +43,10 @@ const createUser = async (req, res) => {
         return res.status(204).json(newUser);
     } catch (err) {
         console.error('Error creating user:', err);
-        throw err;
+        res.status(500).json({ 
+            error: 'Error creating user',
+            message: err.message
+        });
     }
 };
 
@@ -65,7 +71,10 @@ const updateUser = async (req, res) => {
         res.status(204).json(updatedUser);
     } catch (err) {
         console.error('Error updating user:', err);
-        res.status(500).json({ error: 'Failed to update user' });
+        res.status(500).json({ 
+            error: 'Failed to update user',
+            message: err.message
+        });
     }
 };
 
@@ -83,7 +92,10 @@ const deleteUser = async (req, res) => {
         res.status(204).send();
     } catch (err) {
         console.error('Error deleting user:', err);
-        res.status(500).json({ error: 'Failed to delete user' });
+        res.status(500).json({ 
+            error: 'Failed to delete user',
+            message: err.message
+        });
     }
 };
 

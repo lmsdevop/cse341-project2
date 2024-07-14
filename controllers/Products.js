@@ -26,7 +26,10 @@ const getSingleProduct = async (req, res) => {
         res.status(200).json(product);
     } catch (err) {
         console.error('Error fetching product:', err);
-        res.status(500).json({ error: 'Failed to fetch product' });
+        res.status(500).json({ 
+                error: 'Failed to fetch product',
+                message: err.message
+            });
     }
 };
 
@@ -40,7 +43,10 @@ const createProduct = async (req, res) => {
         return res.status(204).json(newProduct);
     } catch (err) {
         console.error('Error creating product:', err);
-        throw err;
+        res.status(500).json({ 
+            error: 'Error creating product',
+            message: err.message
+        });
     }
 };
 
@@ -67,7 +73,10 @@ const updateProduct = async (req, res) => {
         res.status(204).json(updatedProduct);
     } catch (err) {
         console.error('Error updating product:', err);
-        res.status(500).json({ error: 'Failed to update product' });
+        res.status(500).json({ 
+            error: 'Failed to update product',
+            message: err.message
+        });
     }
 };
 
@@ -85,7 +94,10 @@ const deleteProduct = async (req, res) => {
         res.status(204).send();
     } catch (err) {
         console.error('Error deleting product:', err);
-        res.status(500).json({ error: 'Failed to delete product' });
+        res.status(500).json({ 
+            error: 'Failed to delete product',
+            message: err.message
+        });
     }
 };
 

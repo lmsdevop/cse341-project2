@@ -10,7 +10,7 @@ POST http://localhost:3000/products HTTP/1.1
 content-type: application/json
 
 {
-    "productName": "Ergonomic Cotton Keyboaraaaaad",
+    "productName": "Ergonomic Cotton Keyboara",
     "description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
     "price": 99.99,
     "category": "electronics",
@@ -18,19 +18,19 @@ content-type: application/json
 }
 
 ### Update product
-PUT http://localhost:3000/products/669203474f9fad205da9e298 HTTP/1.1
+PUT http://localhost:3000/products/669289f0c1bcc73fe568190 HTTP/1.1
 content-type: application/json
 
 {
-    "productName": "Ergonomic Cotton Keyboardas",
-    "description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
-    "price": "199.99",
+    "productName": "Ergonomic Cotton Keyboard",
+    "descriptio": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+    "price": 99.99,
     "category": "electronics",
-    "stockQuantity": 200
+    "stockQuantity": 200,
 }
 
 ### Delete product
-DELETE http://localhost:3000/products/6692894b52991db45ad2e425 HTTP/1.1
+DELETE http://localhost:3000/products/669329eaf8541ec5c7c5f7c HTTP/1.1
 
 
 // PRODUCTION
