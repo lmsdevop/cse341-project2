@@ -1,11 +1,11 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Vendors Api",
-    "description": "Vendors Api",
+    "title": "Vendors API",
+    "description": "API for managing users and products.",
     "version": "1.0.0"
   },
-  "host": "cse341-project2-hhgl.onrender.com",
+  "host": "https://cse341-project2-hhgl.onrender.com",
   "basePath": "/",
   "schemes": [
     "http",
@@ -17,20 +17,40 @@
         "tags": [
           "Hello World"
         ],
-        "description": "",
+        "summary": "Welcome endpoint",
+        "description": "Returns a welcome message.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "type": "string",
+              "example": "Welcome to the Vendors API!"
+            }
           }
         }
       }
     },
     "/api-docs": {
       "get": {
-        "description": "",
+        "tags": [
+          "API Docs"
+        ],
+        "summary": "API documentation",
+        "description": "Returns the API documentation.",
         "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string",
+              "example": "API documentation content"
+            }
+          },
           "default": {
-            "description": ""
+            "description": "Unexpected error",
+            "schema": {
+              "type": "string",
+              "example": "Error message"
+            }
           }
         }
       }
@@ -40,10 +60,35 @@
         "tags": [
           "Users"
         ],
-        "description": "Get all users",
+        "summary": "Get all users",
+        "description": "Returns a list of all users.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "60c72b2f9b1e8b3e7c8f4e5b"
+                  },
+                  "username": {
+                    "type": "string",
+                    "example": "johndoe"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "john.doe@example.com"
+                  },
+                  "role": {
+                    "type": "string",
+                    "example": "user"
+                  }
+                }
+              }
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -54,34 +99,66 @@
         "tags": [
           "Users"
         ],
-        "description": "Create Users",
-        "parameters":  [
+        "summary": "Create a user",
+        "description": "Creates a new user.",
+        "parameters": [
           {
-          "name": "body",
-          "in": "body",
-          "schema": {
-            "type": "object",
-            "properties": {
-              "username": {
-                "example": "any"
-              },
-              "email": {
-                "example": "any"
-              },
-              "password": {
-                "example": "any"
-              },
-              "role": {
-                "example": "any"
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "johndoe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "john.doe@example.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "password123"
+                },
+                "role": {
+                  "type": "string",
+                  "example": "user"
+                }
               }
             }
           }
-        }
-      ]
-        ,
+        ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "201": {
+            "description": "User created",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "60c72b2f9b1e8b3e7c8f4e5b"
+                },
+                "username": {
+                  "type": "string",
+                  "example": "johndoe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "john.doe@example.com"
+                },
+                "role": {
+                  "type": "string",
+                  "example": "user"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -91,21 +168,44 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "summary": "Get user by ID",
+        "description": "Returns a user by their ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "User ID"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "60c72b2f9b1e8b3e7c8f4e5b"
+                },
+                "username": {
+                  "type": "string",
+                  "example": "johndoe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "john.doe@example.com"
+                },
+                "role": {
+                  "type": "string",
+                  "example": "user"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "User not found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -116,31 +216,38 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "summary": "Update user by ID",
+        "description": "Updates a user by their ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "User ID"
           },
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "username": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "johndoe"
                 },
                 "email": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "john.doe@example.com"
                 },
                 "password": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "password123"
                 },
                 "role": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "user"
                 }
               }
             }
@@ -151,7 +258,7 @@
             "description": "No Content"
           },
           "404": {
-            "description": "Not Found"
+            "description": "User not found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -162,13 +269,15 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "summary": "Delete user by ID",
+        "description": "Deletes a user by their ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "User ID"
           }
         ],
         "responses": {
@@ -176,7 +285,7 @@
             "description": "No Content"
           },
           "404": {
-            "description": "Not Found"
+            "description": "User not found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -189,10 +298,43 @@
         "tags": [
           "Products"
         ],
-        "description": "",
+        "summary": "Get all products",
+        "description": "Returns a list of all products.",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "60c72b2f9b1e8b3e7c8f4e5b"
+                  },
+                  "productName": {
+                    "type": "string",
+                    "example": "Product Name"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Product Description"
+                  },
+                  "price": {
+                    "type": "number",
+                    "example": 19.99
+                  },
+                  "category": {
+                    "type": "string",
+                    "example": "Category Name"
+                  },
+                  "stockQuantity": {
+                    "type": "integer",
+                    "example": 100
+                  }
+                }
+              }
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -203,34 +345,78 @@
         "tags": [
           "Products"
         ],
-        "description": "",
-        "parameters":[{
-          "name": "body",
-          "in": "body",
-          "schema": {
-            "type": "object",
-            "properties": {
-              "productName": {
-                "example": "any"
-              },
-              "description": {
-                "example": "any"
-              },
-              "price": {
-                "example": "any"
-              },
-              "category": {
-                "example": "any"
-              },
-              "stockQuantity": {
-                "example": "any"
+        "summary": "Create a product",
+        "description": "Creates a new product.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "productName": {
+                  "type": "string",
+                  "example": "Product Name"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Product Description"
+                },
+                "price": {
+                  "type": "number",
+                  "example": 19.99
+                },
+                "category": {
+                  "type": "string",
+                  "example": "Category Name"
+                },
+                "stockQuantity": {
+                  "type": "integer",
+                  "example": 100
+                }
               }
             }
           }
-        }],
+        ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "201": {
+            "description": "Product created",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "60c72b2f9b1e8b3e7c8f4e5b"
+                },
+                "productName": {
+                  "type": "string",
+                  "example": "Product Name"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Product Description"
+                },
+                "price": {
+                  "type": "number",
+                  "example": 19.99
+                },
+                "category": {
+                  "type": "string",
+                  "example": "Category Name"
+                },
+                "stockQuantity": {
+                  "type": "integer",
+                  "example": 100
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -240,21 +426,52 @@
         "tags": [
           "Products"
         ],
-        "description": "",
+        "summary": "Get product by ID",
+        "description": "Returns a product by its ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Product ID"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "60c72b2f9b1e8b3e7c8f4e5b"
+                },
+                "productName": {
+                  "type": "string",
+                  "example": "Product Name"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Product Description"
+                },
+                "price": {
+                  "type": "number",
+                  "example": 19.99
+                },
+                "category": {
+                  "type": "string",
+                  "example": "Category Name"
+                },
+                "stockQuantity": {
+                  "type": "integer",
+                  "example": 100
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Product not found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -265,34 +482,42 @@
         "tags": [
           "Products"
         ],
-        "description": "",
+        "summary": "Update product by ID",
+        "description": "Updates a product by its ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Product ID"
           },
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "productName": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Product Name"
                 },
                 "description": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Product Description"
                 },
                 "price": {
-                  "example": "any"
+                  "type": "number",
+                  "example": 19.99
                 },
                 "category": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Category Name"
                 },
                 "stockQuantity": {
-                  "example": "any"
+                  "type": "integer",
+                  "example": 100
                 }
               }
             }
@@ -303,7 +528,7 @@
             "description": "No Content"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Product not found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -314,13 +539,15 @@
         "tags": [
           "Products"
         ],
-        "description": "",
+        "summary": "Delete product by ID",
+        "description": "Deletes a product by its ID.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Product ID"
           }
         ],
         "responses": {
@@ -328,7 +555,7 @@
             "description": "No Content"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Product not found"
           },
           "500": {
             "description": "Internal Server Error"
